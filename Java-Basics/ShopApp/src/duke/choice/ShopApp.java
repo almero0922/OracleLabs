@@ -1,5 +1,7 @@
 package duke.choice;
 
+import java.util.Arrays;
+
 public class ShopApp {
 
     public static void main(String[] args) {
@@ -42,7 +44,6 @@ public class ShopApp {
 //        item4.setDescription("Blue T-Shirt");
 //        item4.setPrice(10.5);
 //        item4.setSize("S");
-
         //Print atributtes of both items
         //System.out.println("Item 1: " + item1.description + ", " + item1.price + ", " + item1.size);
         //System.out.println("Item 2: " + item2.description + ", " + item2.price + ", " + item2.size);
@@ -53,29 +54,34 @@ public class ShopApp {
 
         System.out.println("Customer is " + c1.getName() + ", " + c1.getSize());
         System.out.println("Pinky Items: ");
+        
+        Arrays.sort(c1.getItems());
+        
         int i = 0;
         for (Clothing unitItem : items) {
 
-            System.out.println("Item " + (i + 1) + ": " + unitItem.getDescription() + ", " + unitItem.getPrice() + ", " + unitItem.getSize());
+//            System.out.println("Item " + (i + 1) + ": " + unitItem.getDescription() + ", " + unitItem.getPrice() + ", " + unitItem.getSize());
             i++;
+            System.out.println("Item " + (i) + ": " + unitItem);
+
         }
 
         System.out.println("Total = " + c1.getTotalClothingCost());
-        
+
         int average = 0;
         int count = 0;
-        
-        for(Clothing item : c1.getItems()){
-            if(item.getSize().equals("L")){
-            average += item.getPrice();
-            count++;
+
+        for (Clothing item : c1.getItems()) {
+            if (item.getSize().equals("L")) {
+                average += item.getPrice();
+                count++;
             }
         }
-        try{
-        average = (count == 0 ) ? 0 : average / count;
-        average = average / count;
-        System.out.println("Average = " + average + ", Count = " + count);
-        }catch(ArithmeticException e){
+        try {
+            average = (count == 0) ? 0 : average / count;
+            average = average / count;
+            System.out.println("Average = " + average + ", Count = " + count);
+        } catch (ArithmeticException e) {
             System.out.println("Don't Divide by zero");
         }
     }
