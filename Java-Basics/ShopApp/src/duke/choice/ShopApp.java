@@ -19,7 +19,7 @@ public class ShopApp {
         //c1.setName("Pinky");
         //System.out.println("Welcome " + c1.getName());
         //c1.setSize("S");
-
+        System.out.println("The minimun price is " + Clothing.MIN_PRICE);
         //System.out.println("Pinky size: " + c1.getSize());
         //Create 2 new objects of Clothing class
         Clothing item1 = new Clothing("Blue Jacket", 20.9, "S");
@@ -61,6 +61,22 @@ public class ShopApp {
         }
 
         System.out.println("Total = " + c1.getTotalClothingCost());
-
+        
+        int average = 0;
+        int count = 0;
+        
+        for(Clothing item : c1.getItems()){
+            if(item.getSize().equals("L")){
+            average += item.getPrice();
+            count++;
+            }
+        }
+        try{
+        average = (count == 0 ) ? 0 : average / count;
+        average = average / count;
+        System.out.println("Average = " + average + ", Count = " + count);
+        }catch(ArithmeticException e){
+            System.out.println("Don't Divide by zero");
+        }
     }
 }
