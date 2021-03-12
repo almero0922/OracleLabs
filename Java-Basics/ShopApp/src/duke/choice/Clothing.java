@@ -1,13 +1,21 @@
 package duke.choice;
 
 public class Clothing {
-    
+
     private final double minimunPrice = 10;
     private final double tax = 0.2;
-    
+
     private String description;
     private double price;
     private String size = "M";
+
+    public Clothing(String description, double price, String size) {
+        this.description = description;
+        this.price = price;
+        this.size = size;
+    }
+    
+    
 
     public String getDescription() {
         return description;
@@ -22,13 +30,11 @@ public class Clothing {
     }
 
     public void setPrice(double price) {
-        
+
         //this.price = (price > minimumPrice) ? price : minimumPrice;
-        
-        if(price > minimunPrice){
-        this.price = price;
-        }
-        else{
+        if (price > minimunPrice) {
+            this.price = price;
+        } else {
             System.out.println("Error: The item " + this.description + " cost less than 10");
             this.price = minimunPrice;
         }
@@ -42,6 +48,4 @@ public class Clothing {
         this.size = size;
     }
 
- 
-    
 }

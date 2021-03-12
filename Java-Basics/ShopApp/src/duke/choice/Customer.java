@@ -6,6 +6,13 @@ public class Customer {
     private String size;
     private Clothing[] items;
 
+    public Customer(String name, int measurement) {
+        this.name = name;
+        this.setSize(measurement);
+    }
+
+    
+    
     public String getName() {
         return name;
     }
@@ -58,19 +65,9 @@ public class Customer {
 
     public double getTotalClothingCost() {
 
-        int i = 0;
         double total = 0.0;
-        
         for (Clothing unitItem : items) {
-
-            //if (this.getSize() == unitItem.getSize()) {
-                total = total + unitItem.getPrice();
-                System.out.println("Item " + (i + 1) + ": " + unitItem.getDescription() + ", " + unitItem.getPrice() + ", " + unitItem.getSize());
-                i++;
-//                if (total > 15) {
-//                    break;
-//                }
-           // }
+            total = total + unitItem.getPrice();
 
         }
         return total;
