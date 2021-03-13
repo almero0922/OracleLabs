@@ -1,6 +1,11 @@
 package duke.choice;
 
 import java.util.Arrays;
+import io.helidon.webserver.Routing;
+import io.helidon.webserver.ServerConfiguration;
+import io.helidon.webserver.WebServer;
+import java.net.UnknownHostException;
+import java.net.InetAddress;
 
 public class ShopApp {
 
@@ -32,6 +37,22 @@ public class ShopApp {
         //
         Clothing[] items = {item1, item2, item3, item4};
 
+        try{
+            ItemList list = new ItemList(items);
+            Routing routing = Routing.builder()
+            .get("/items", list).build();
+        ServerConfiguration config = ServerConfiguration.builder()
+                .bindAddress(InetAddress.getLocalHost())
+                .port(8888).build();
+        WebServer ws = WebServer.create(config, routing);
+        ws.start();
+        }catch(UnknownHostException ex){
+            ex.printStackTrace();
+            
+        
+        }
+        
+        
 //        //Give description, size, price atributtes to both objects
 //        item1.setDescription("Blue Jacket");
 //        item1.setPrice(20.9);
